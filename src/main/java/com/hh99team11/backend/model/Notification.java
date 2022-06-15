@@ -36,7 +36,7 @@ public class Notification {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action= OnDeleteAction.CASCADE)
-    @JoinColumn(name = "user_id")
+    @JoinColumn
     private User receiver;
 
 

@@ -1,7 +1,6 @@
 package com.hh99team11.backend.model;
 
 
-
 import com.hh99team11.backend.model.enumType.PetSizeType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,14 +14,15 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Builder
+@Table(name = "\"USER\"")
 public class User {
 
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String memberId;
+    private String username;
 
     @Column
     private String password;
@@ -46,6 +46,10 @@ public class User {
     @Column
     private Long lng; //경도
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
 
 }

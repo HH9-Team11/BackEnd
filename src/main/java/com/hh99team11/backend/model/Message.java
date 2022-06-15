@@ -29,11 +29,11 @@ public class Message {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action= OnDeleteAction.CASCADE)
-    @JoinColumn(name = "sender_id")
+    @JoinColumn
     private User sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action= OnDeleteAction.CASCADE)
-    @JoinColumn(name = "receiver_id")
+    @JoinColumn
     private User receiver;
 }
