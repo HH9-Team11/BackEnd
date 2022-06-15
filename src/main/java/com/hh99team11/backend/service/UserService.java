@@ -1,6 +1,7 @@
 package com.hh99team11.backend.service;
 
 import com.hh99team11.backend.dto.SignupRequestDto;
+import com.hh99team11.backend.dto.UserInfo;
 import com.hh99team11.backend.model.User;
 import com.hh99team11.backend.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ public class UserService {
     private final UserRepository userRepository;
 
 
-    public void registerUser(SignupRequestDto requestDto) {
+    public UserInfo registerUser(SignupRequestDto requestDto) {
         // 회원 ID 중복 확인
         String username = requestDto.getUsername();
         Optional<User> found = userRepository.findByUsername(username);
@@ -29,5 +30,10 @@ public class UserService {
 
         User user = new User(username, password);
         userRepository.save(user);
+
+        return UserInfo.builder()
+                .userId(user.getId())
+                .username(username)
+                .build();
     }
 }
