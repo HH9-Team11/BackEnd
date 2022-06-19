@@ -1,6 +1,7 @@
 package com.hh99team11.backend.model;
 
 
+import com.hh99team11.backend.dto.SignupRequestDto;
 import com.hh99team11.backend.model.enumType.PetSizeType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,14 +42,25 @@ public class User {
     private String address;
 
     @Column
-    private Long lat; //위도
+    private Double lat; //위도
 
     @Column
-    private Long lng; //경도
+    private Double lng; //경도
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(SignupRequestDto user, String password){
+        this.username = user.getUsername();
+        this.password = password;
+        this.petName = user.getPetName();
+        this.petSizeType = user.getPetSizeType();
+        this.dogAge = user.getDogAge();
+        this.address = user.getAddress();
+        this.lat = user.getLat();
+        this.lng = user.getLng();
     }
 
 
