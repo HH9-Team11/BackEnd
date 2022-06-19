@@ -1,6 +1,6 @@
 package com.hh99team11.backend.model;
 
-
+import com.hh99team11.backend.dto.SignupRequestDto;
 import com.hh99team11.backend.dto.MyPageDto;
 import com.hh99team11.backend.model.enumType.PetSizeType;
 import lombok.AllArgsConstructor;
@@ -43,10 +43,10 @@ public class User {
     private String address;
 
     @Column
-    private Long lat; //위도
+    private Double lat; //위도
 
     @Column
-    private Long lng; //경도
+    private Double lng; //경도
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Img> userImgList;
@@ -57,6 +57,16 @@ public class User {
         this.password = password;
     }
 
+    public User(SignupRequestDto user, String password){
+        this.username = user.getUsername();
+        this.password = password;
+        this.petName = user.getPetName();
+        this.petSizeType = user.getPetSizeType();
+        this.animalAge = user.getDogAge();
+        this.address = user.getAddress();
+        this.lat = user.getLat();
+        this.lng = user.getLng();
+    }
     public void updateInfo(MyPageDto.RequestDto requestDto , List<Img>userImgList){
         this.petName = requestDto.getPetName();
         this.petSizeType = requestDto.getPetSizeType();
@@ -68,7 +78,6 @@ public class User {
         for(Img userImg : userImgList){
             userImg.updateUser(this);
         }
-
     }
 
 

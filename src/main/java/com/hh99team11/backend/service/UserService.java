@@ -28,7 +28,7 @@ public class UserService {
         // 패스워드 암호화
         String password = passwordEncoder.encode(requestDto.getPassword());
 
-        User user = new User(username, password);
+        User user = new User(requestDto, password);
         userRepository.save(user);
 
         return UserInfo.builder()
