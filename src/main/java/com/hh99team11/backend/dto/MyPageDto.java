@@ -21,8 +21,8 @@ public class MyPageDto {
         private PetSizeType petSizeType;
         private Long animalAge;
         private String address;
-        private Long lat;
-        private Long lng;
+        private Double lat;
+        private Double lng;
         private List<ImgUrlDto> currentImgUrl; //삭제해야할 기존 URL
 
     }
@@ -38,8 +38,8 @@ public class MyPageDto {
         private PetSizeType petSizeType;
         private Long animalAge;
         private String address;
-        private Long lat;
-        private Long lng;
+        private Double lat;
+        private Double lng;
         private List<String> animalImgUrlList;
     }
 
