@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Entity
-public class Img {
+public class Img  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +25,7 @@ public class Img {
     @JoinColumn
     private User user;
 
+    public void updateUser(User user) {
+        this.user = user;
+    }
 }

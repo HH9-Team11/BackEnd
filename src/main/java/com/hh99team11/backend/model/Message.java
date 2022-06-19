@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Builder
-public class Message {
+public class Message extends TimeStamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
