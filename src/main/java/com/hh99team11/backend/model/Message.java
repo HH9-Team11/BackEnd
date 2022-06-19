@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Builder
-public class Message {
+public class Message extends TimeStamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +29,11 @@ public class Message {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action= OnDeleteAction.CASCADE)
-    @JoinColumn(name = "sender_id")
+    @JoinColumn
     private User sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action= OnDeleteAction.CASCADE)
-    @JoinColumn(name = "receiver_id")
+    @JoinColumn
     private User receiver;
 }

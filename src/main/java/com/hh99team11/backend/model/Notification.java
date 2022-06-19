@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Builder
-public class Notification {
+public class Notification extends TimeStamped {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,7 +36,7 @@ public class Notification {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action= OnDeleteAction.CASCADE)
-    @JoinColumn(name = "user_id")
+    @JoinColumn
     private User receiver;
 
 
