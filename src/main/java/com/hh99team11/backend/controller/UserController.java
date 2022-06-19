@@ -22,4 +22,5 @@ public class UserController {
         UserInfo userInfo = userService.registerUser(requestDto);
         return new ResponseEntity<>(new StatusResponseDto("회원가입 1차 성공", userInfo), HttpStatus.OK);
     }
+
 }

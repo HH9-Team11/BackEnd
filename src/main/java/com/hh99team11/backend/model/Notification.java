@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Builder
-public class Notification {
+public class Notification extends TimeStamped {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
