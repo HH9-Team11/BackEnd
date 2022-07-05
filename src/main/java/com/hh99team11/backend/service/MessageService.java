@@ -34,4 +34,7 @@ public class MessageService {
         return MessageResponseDto.create(message);
 
     }
+
+    public void findAllCommunicators(Long id) {
+    }
 }
