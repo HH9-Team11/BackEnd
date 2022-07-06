@@ -2,6 +2,7 @@ package com.hh99team11.backend.model;
 
 import com.hh99team11.backend.dto.SignupRequestDto;
 import com.hh99team11.backend.dto.MyPageDto;
+import com.hh99team11.backend.model.enumType.DogGenderType;
 import com.hh99team11.backend.model.enumType.PetSizeType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +17,6 @@ import java.util.List;
 @Getter
 @Entity
 @Builder
-@Table(name = "\"USER\"")
 public class User {
 
     @Id
@@ -30,11 +30,15 @@ public class User {
     private String password;
 
     @Column
-    private String petName;
+    private String dogName;
 
     @Enumerated(EnumType.STRING)
     @Column
     private PetSizeType petSizeType; //펫 크기
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private DogGenderType dogGender;
 
     @Column
     private Long animalAge;
@@ -60,15 +64,16 @@ public class User {
     public User(SignupRequestDto user, String password){
         this.username = user.getUsername();
         this.password = password;
-        this.petName = user.getPetName();
-        this.petSizeType = user.getPetSizeType();
+        this.dogName = user.getDogName();
+//        this.petSizeType = user.getPetSizeType();
         this.animalAge = user.getDogAge();
+        this.dogGender = user.getDogGender();
         this.address = user.getAddress();
         this.lat = user.getLat();
         this.lng = user.getLng();
     }
     public void updateInfo(MyPageDto.RequestDto requestDto , List<Img>userImgList){
-        this.petName = requestDto.getPetName();
+        this.dogName = requestDto.getPetName();
         this.petSizeType = requestDto.getPetSizeType();
         this.animalAge = requestDto.getAnimalAge();
         this.address = requestDto.getAddress();
