@@ -46,7 +46,7 @@ public class MyPageService {
             }
 
         return MyPageDto.ResponseDto.builder()
-                .petName(user.getPetName())
+                .petName(user.getDogName())
                 .petSizeType(user.getPetSizeType())
                 .animalAge(user.getAnimalAge())
                 .address(user.getAddress())

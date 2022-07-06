@@ -1,11 +1,11 @@
 package com.hh99team11.backend.dto;
 
-import com.hh99team11.backend.model.enumType.PetSizeType;
+import com.hh99team11.backend.model.enumType.DogGenderType;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Setter
 @Getter
@@ -19,12 +19,16 @@ public class SignupRequestDto {
     private String password;
 
     @NotBlank(message = "강아지 이름은 필수 입력 값입니다.")
-    private String petName;
+    private String dogName;
 
-    @NotBlank(message = "강아지 크기는 필수 입력 값입니다.")
-    private PetSizeType petSizeType;
+//    @NotBlank(message = "강아지 크기는 필수 입력 값입니다.")
+//    private PetSizeType petSizeType;
 
-    private MultipartFile dogImg;
+    private String dogSize;
+
+    private DogGenderType dogGender;
+
+//    private MultipartFile dogImg;
 
     @NotBlank(message = "강아지 나이는 필수 입력 값입니다.")
     private Long dogAge;

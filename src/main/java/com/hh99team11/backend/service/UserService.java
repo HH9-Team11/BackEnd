@@ -8,13 +8,16 @@ import com.hh99team11.backend.model.User;
 import com.hh99team11.backend.repository.ImgRepository;
 import com.hh99team11.backend.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class UserService {
@@ -24,7 +27,8 @@ public class UserService {
     private final ImgRepository imgRepository;
 
     @Transactional
-    public UserInfo registerUser(SignupRequestDto requestDto) throws IOException {
+    public UserInfo registerUser(SignupRequestDto requestDto, MultipartFile img) throws IOException {
+        log.info("UserService registerUser");
         // 회원 ID 중복 확인
         String username = requestDto.getUsername();
         Optional<User> found = userRepository.findByUsername(username);
@@ -37,11 +41,10 @@ public class UserService {
         User user = new User(requestDto, password);
         userRepository.save(user);
 
+        ImgDto imgDto = fileUploadService.uploadImage(img);
 
-        ImgDto imgDto = fileUploadService.uploadImage(requestDto.getDogImg());
-
-        Img img = imgDto.toEntity(user);
-        imgRepository.save(img);
+        Img savedImg = imgDto.toEntity(user);
+        imgRepository.save(savedImg);
 
         return UserInfo.builder()
                 .userId(user.getId())
