@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @AllArgsConstructor
 public class UserController {
@@ -18,7 +20,7 @@ public class UserController {
 
     // 회원 가입 요청 처리
     @PostMapping("/user/signup")
-    public ResponseEntity<Object> registerUser(SignupRequestDto requestDto) {
+    public ResponseEntity<Object> registerUser(SignupRequestDto requestDto) throws IOException {
         UserInfo userInfo = userService.registerUser(requestDto);
         return new ResponseEntity<>(new StatusResponseDto("회원가입 1차 성공", userInfo), HttpStatus.OK);
     }
