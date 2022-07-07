@@ -12,13 +12,17 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindAllMessageDto {
+public class RecentMessageDto {
 
-    private Long userId;
+    private Long id;
 
     private User sender;
     private User receiver;
 
     private String content;
     private Long unReadCount; // 해당 대화 상대와 읽지 않은 메시지 갯수 ,
+
+    public void updateUnReadCount(Long unReadCount){
+        this.unReadCount = unReadCount;
+    }
 }
