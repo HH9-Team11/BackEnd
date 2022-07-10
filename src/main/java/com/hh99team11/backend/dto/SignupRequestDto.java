@@ -19,19 +19,19 @@ public class SignupRequestDto {
     private String password;
 
     @NotBlank(message = "강아지 이름은 필수 입력 값입니다.")
-    private String dogName;
+    private String petName;
 
 //    @NotBlank(message = "강아지 크기는 필수 입력 값입니다.")
 //    private PetSizeType petSizeType;
 
-    private String dogSize;
+    private String petSize;
 
-    private DogGenderType dogGender;
+    private DogGenderType petGender;
 
 //    private MultipartFile dogImg;
 
     @NotBlank(message = "강아지 나이는 필수 입력 값입니다.")
-    private Long dogAge;
+    private Long petAge;
 
     @NotBlank(message = "주소는 필수 입력 값입니다.")
     private String address;

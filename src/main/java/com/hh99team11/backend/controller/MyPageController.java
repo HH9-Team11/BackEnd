@@ -22,6 +22,7 @@ import java.util.List;
 public class MyPageController {
 
     private final MyPageService myPageService;
+
     //동물 정보 조회
     @GetMapping("/user/info/{userId}")
     public ResponseEntity<Object> animalInfo(@PathVariable Long userId){
@@ -31,13 +32,13 @@ public class MyPageController {
         return new ResponseEntity<>(new StatusResponseDto("동물 정보 조회 성공", findAnimalInfo), HttpStatus.OK);
     }
     //동물 정보 수정
-    @PatchMapping("/user/info/{userId}/modify")
-    public ResponseEntity<ExceptionResponse> userInfoModify(@PathVariable Long userId,
+    @PatchMapping("/user/info/modify")
+    public ResponseEntity<ExceptionResponse> userInfoModify(
                                                  @RequestPart MyPageDto.RequestDto requestDto,
                                                  @RequestPart(required = false) List<MultipartFile> imgs,
                                                  @AuthenticationPrincipal UserDetailsImpl userDetails) throws IOException {
 
-        myPageService.modifyAnimalInfo(userId,requestDto,imgs,userDetails);
+        myPageService.modifyAnimalInfo(requestDto,imgs,userDetails);
         return new ResponseEntity<>(new ExceptionResponse(ErrorCode.OK), HttpStatus.OK);
     }
 }

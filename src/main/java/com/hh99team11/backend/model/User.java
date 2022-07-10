@@ -64,10 +64,10 @@ public class User {
     public User(SignupRequestDto user, String password){
         this.username = user.getUsername();
         this.password = password;
-        this.dogName = user.getDogName();
+        this.dogName = user.getPetName();
 //        this.petSizeType = user.getPetSizeType();
-        this.animalAge = user.getDogAge();
-        this.dogGender = user.getDogGender();
+        this.animalAge = user.getPetAge();
+        this.dogGender = user.getPetGender();
         this.address = user.getAddress();
         this.lat = user.getLat();
         this.lng = user.getLng();
@@ -75,7 +75,7 @@ public class User {
     public void updateInfo(MyPageDto.RequestDto requestDto , List<Img>userImgList){
         this.dogName = requestDto.getPetName();
         this.petSizeType = requestDto.getPetSizeType();
-        this.animalAge = requestDto.getAnimalAge();
+        this.animalAge = requestDto.getPetAge();
         this.address = requestDto.getAddress();
         this.lat = requestDto.getLat();
         this.lng = requestDto.getLng();
