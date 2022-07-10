@@ -1,6 +1,6 @@
 package com.hh99team11.backend.dto;
 
-import com.hh99team11.backend.model.enumType.DogGenderType;
+import com.hh99team11.backend.model.enumType.PetGenderType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,7 +26,7 @@ public class SignupRequestDto {
 
     private String petSize;
 
-    private DogGenderType petGender;
+    private PetGenderType petGender;
 
 //    private MultipartFile dogImg;
 
