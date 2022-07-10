@@ -32,8 +32,8 @@ public class MessageController {
     }
 
     // 쪽지 상대 전체 조회 :: 받은 메시지 , 보낸 메시지
-    @GetMapping("/api/message")
-    public ResponseEntity<Object> receiveMessage(@AuthenticationPrincipal UserDetailsImpl userDetails)  {
+    @GetMapping("/api/communicator")
+    public ResponseEntity<Object> findAllCommunicators(@AuthenticationPrincipal UserDetailsImpl userDetails)  {
 
         List<RecentMessageDto> messagesDto = messageService.findAllCommunicators(userDetails.getUser().getId());
         return new ResponseEntity<>(new StatusResponseDto("쪽지 상대 전체를 조회합니다.", messagesDto), HttpStatus.OK);

@@ -11,6 +11,7 @@ import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 
 import static com.hh99team11.backend.model.QMessage.message;
 
+@Repository
 @RequiredArgsConstructor
 public class MessageCustomRepositoryImpl implements MessageCustomRepository{
     private final JPAQueryFactory jpaQueryFactory;
@@ -57,7 +59,6 @@ public class MessageCustomRepositoryImpl implements MessageCustomRepository{
                                 .where(equalsWithSenderId(userId))
                                 .groupBy(message.sender,message.receiver)))
                 .fetch();
-
 
         List<RecentMessageDto> countMessages = jpaQueryFactory
                 .select(Projections.constructor(RecentMessageDto.class,
