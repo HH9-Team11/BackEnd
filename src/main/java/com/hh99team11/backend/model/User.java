@@ -65,7 +65,7 @@ public class User {
         this.username = user.getUsername();
         this.password = password;
         this.petName = user.getPetName();
-//        this.petSizeType = user.getPetSizeType();
+        this.petSizeType = user.getPetSize();
         this.petAge = user.getPetAge();
         this.petGender = user.getPetGender();
         this.address = user.getAddress();
