@@ -19,7 +19,7 @@ public class MyPageDto {
 
         private String petName;
         private PetSizeType petSizeType;
-        private Long animalAge;
+        private Long petAge;
         private String address;
         private Double lat;
         private Double lng;
@@ -36,11 +36,11 @@ public class MyPageDto {
 
         private String petName;
         private PetSizeType petSizeType;
-        private Long animalAge;
+        private Long petAge;
         private String address;
         private Double lat;
         private Double lng;
-        private List<String> animalImgUrlList;
+        private List<String> petImgUrlList;
     }
 
 }
