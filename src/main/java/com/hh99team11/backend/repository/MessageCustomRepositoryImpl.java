@@ -11,6 +11,7 @@ import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 import static com.hh99team11.backend.model.QMessage.message;
 
 @RequiredArgsConstructor
+@Repository
 public class MessageCustomRepositoryImpl implements MessageCustomRepository{
     private final JPAQueryFactory jpaQueryFactory;
 
