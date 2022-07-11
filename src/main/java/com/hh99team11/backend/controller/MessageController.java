@@ -1,6 +1,7 @@
 package com.hh99team11.backend.controller;
 
 
+import com.hh99team11.backend.dto.CommunicatorResponseDto;
 import com.hh99team11.backend.dto.MessageResponseDto;
 import com.hh99team11.backend.dto.MessageRequestDto;
 import com.hh99team11.backend.dto.RecentMessageDto;
@@ -35,7 +36,7 @@ public class MessageController {
     @GetMapping("/api/communicator")
     public ResponseEntity<Object> findAllCommunicators(@AuthenticationPrincipal UserDetailsImpl userDetails)  {
 
-        List<RecentMessageDto> messagesDto = messageService.findAllCommunicators(userDetails.getUser().getId());
+        List<CommunicatorResponseDto> messagesDto = messageService.findAllCommunicators(userDetails.getUser().getId());
         return new ResponseEntity<>(new StatusResponseDto("쪽지 상대 전체를 조회합니다.", messagesDto), HttpStatus.OK);
     }
 }
