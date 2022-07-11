@@ -24,7 +24,7 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
                 .select(Projections.constructor(NearByUserResponseDto.class,
                         user.id,
                         user.username,
-                        user.dogName,
+                        user.petName,
                         user.username, //Todo imgUrl 로 바꿔야함
                         user.petSizeType,
                         user.lat,
