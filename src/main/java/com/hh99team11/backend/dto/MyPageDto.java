@@ -1,5 +1,6 @@
 package com.hh99team11.backend.dto;
 
+import com.hh99team11.backend.model.enumType.PetGenderType;
 import com.hh99team11.backend.model.enumType.PetSizeType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,6 +42,7 @@ public class MyPageDto {
         private Double lat;
         private Double lng;
         private List<String> petImgUrlList;
+        private PetGenderType petGenderType;
     }
 
 }

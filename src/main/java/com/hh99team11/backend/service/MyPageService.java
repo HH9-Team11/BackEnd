@@ -50,6 +50,7 @@ public class MyPageService {
                 .petSizeType(user.getPetSizeType())
                 .petAge(user.getPetAge())
                 .address(user.getAddress())
+                .petGenderType(user.getPetGender())
                 .lat(user.getLat())
                 .lng(user.getLng())
                 .petImgUrlList(imgUrlList)

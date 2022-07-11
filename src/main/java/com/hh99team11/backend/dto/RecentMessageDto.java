@@ -25,4 +25,6 @@ public class RecentMessageDto {
     public void updateUnReadCount(Long unReadCount){
         this.unReadCount = unReadCount;
     }
+
+
 }
