@@ -68,6 +68,7 @@ public class User {
         this.petSizeType = user.getPetSize();
         this.petAge = user.getPetAge();
         this.petGender = user.getPetGender();
+
         this.address = user.getAddress();
         this.lat = user.getLat();
         this.lng = user.getLng();
