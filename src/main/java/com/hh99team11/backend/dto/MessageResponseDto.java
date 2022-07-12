@@ -12,14 +12,14 @@ public class MessageResponseDto {
 
     private Long messageId;
 
-    private Long senderId;
+    private String senderName;
 
-    private Long receiverId;
+    private String receiverName;
 
     private String content;
 
     public static MessageResponseDto create(Message message){
-        return new MessageResponseDto(message.getId(), message.getSender().getId(),
-                message.getReceiver().getId(), message.getContent());
+        return new MessageResponseDto(message.getId(), message.getSender().getUsername(),
+                message.getReceiver().getUsername(), message.getContent());
     }
 }

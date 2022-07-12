@@ -51,4 +51,19 @@ public class MessageService {
                 .collect(Collectors.toList());
 
     }
+
+    public List<MessageResponseDto> findAllMessages(Long receiverId, Long senderId) {
+
+        User sender = userRepository.findById(senderId).orElseThrow(
+                () -> new CustomException(ErrorCode.NOT_FOUND_USER_INFO));
+
+        User receiver = userRepository.findById(receiverId).orElseThrow(
+                () -> new CustomException(ErrorCode.NOT_FOUND_USER_INFO));
+
+        List<Message> message = messageRepository.findMessageBySenderAndReceiver(sender , receiver);
+
+        return message.stream()
+                .map(MessageResponseDto::create)
+                .collect(Collectors.toList());
+    }
 }
