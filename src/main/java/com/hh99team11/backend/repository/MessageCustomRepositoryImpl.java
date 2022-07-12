@@ -23,7 +23,6 @@ import static com.hh99team11.backend.model.QMessage.message;
 
 @Repository
 @RequiredArgsConstructor
-@Repository
 public class MessageCustomRepositoryImpl implements MessageCustomRepository{
     private final JPAQueryFactory jpaQueryFactory;
 
