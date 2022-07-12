@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 
 import static com.hh99team11.backend.model.QMessage.message;
 
+@Repository
 @RequiredArgsConstructor
 @Repository
 public class MessageCustomRepositoryImpl implements MessageCustomRepository{
@@ -59,7 +60,6 @@ public class MessageCustomRepositoryImpl implements MessageCustomRepository{
                                 .where(equalsWithSenderId(userId))
                                 .groupBy(message.sender,message.receiver)))
                 .fetch();
-
 
         List<RecentMessageDto> countMessages = jpaQueryFactory
                 .select(Projections.constructor(RecentMessageDto.class,

@@ -7,6 +7,8 @@ import com.hh99team11.backend.model.Img;
 import com.hh99team11.backend.model.User;
 import com.hh99team11.backend.repository.ImgRepository;
 import com.hh99team11.backend.repository.UserRepository;
+import com.hh99team11.backend.util.exception.CustomException;
+import com.hh99team11.backend.util.exception.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,7 +35,7 @@ public class UserService {
         String username = requestDto.getUsername();
         Optional<User> found = userRepository.findByUsername(username);
         if (found.isPresent()) {
-            throw new IllegalArgumentException("중복된 사용자 ID 가 존재합니다.");
+            throw new CustomException(ErrorCode.SIGNUP_MEMBERID_DUPLICATE);
         }
         // 패스워드 암호화
         String password = passwordEncoder.encode(requestDto.getPassword());

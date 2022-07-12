@@ -1,6 +1,7 @@
 package com.hh99team11.backend.dto;
 
-import com.hh99team11.backend.model.enumType.DogGenderType;
+import com.hh99team11.backend.model.enumType.PetGenderType;
+import com.hh99team11.backend.model.enumType.PetSizeType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,19 +20,17 @@ public class SignupRequestDto {
     private String password;
 
     @NotBlank(message = "강아지 이름은 필수 입력 값입니다.")
-    private String dogName;
+    private String petName;
 
-//    @NotBlank(message = "강아지 크기는 필수 입력 값입니다.")
-//    private PetSizeType petSizeType;
+    @NotBlank(message = "강아지 크기는 필수 입력 값입니다.")
+    private PetSizeType petSize;
 
-    private String dogSize;
+//    private String petSize;
 
-    private DogGenderType dogGender;
-
-//    private MultipartFile dogImg;
+    private PetGenderType petGender;
 
     @NotBlank(message = "강아지 나이는 필수 입력 값입니다.")
-    private Long dogAge;
+    private Long petAge;
 
     @NotBlank(message = "주소는 필수 입력 값입니다.")
     private String address;

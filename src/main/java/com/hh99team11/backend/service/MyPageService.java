@@ -48,22 +48,21 @@ public class MyPageService {
         return MyPageDto.ResponseDto.builder()
                 .petName(user.getPetName())
                 .petSizeType(user.getPetSizeType())
-                .animalAge(user.getPetAge())
+                .petAge(user.getPetAge())
                 .address(user.getAddress())
+                .petGenderType(user.getPetGender())
                 .lat(user.getLat())
                 .lng(user.getLng())
-                .animalImgUrlList(imgUrlList)
+                .petImgUrlList(imgUrlList)
                 .build();
 
     }
 
     @Transactional
-    public void modifyAnimalInfo(Long userId, MyPageDto.RequestDto requestDto, List<MultipartFile> imgs, UserDetailsImpl userDetails) throws IOException {
+    public void modifyAnimalInfo(MyPageDto.RequestDto requestDto, List<MultipartFile> imgs, UserDetailsImpl userDetails) throws IOException {
 
 
-        User user = userRepository.findById(userId).orElseThrow(
-                () -> new CustomException(ErrorCode.NOT_FOUND_USER_INFO)
-        );
+        User user = userDetails.getUser();
 
         //User가 가지고 있는 Img_Url을 전부 조회한다.
         List<Img> userImgList = user.getUserImgList();
@@ -115,6 +114,9 @@ public class MyPageService {
             imgList.add(img);
         }
     }
+
+    
+
 }
 
 
