@@ -41,13 +41,12 @@ public class MessageController {
         DESC : 대상과의 전체 채팅 내역을 보내는 API
      */
 
-    @GetMapping("/api/message/{receiverId}")
-    public ResponseEntity<Object> findAllMessages(@PathVariable Long receiverId,
-                                                  @AuthenticationPrincipal UserDetailsImpl userDetails){
+    @GetMapping("/api/message")
+    public ResponseEntity<Object> findAllMessages(@AuthenticationPrincipal UserDetailsImpl userDetails){
 
-        List<MessageResponseDto>messages = messageService.findAllMessages(receiverId,userDetails.getUser().getId());
+        List<MessageResponseDto>messages = messageService.findAllMessages(userDetails.getUser().getId());
 
-        return new ResponseEntity<>(new StatusResponseDto("상대방과의 모든 쪽지 내용을 조회합니다.",messages),HttpStatus.OK);
+        return new ResponseEntity<>(new StatusResponseDto("회원의 모든 쪽지 내용을 조회합니다.",messages),HttpStatus.OK);
     }
 
 }

@@ -52,15 +52,12 @@ public class MessageService {
 
     }
 
-    public List<MessageResponseDto> findAllMessages(Long receiverId, Long senderId) {
+    public List<MessageResponseDto> findAllMessages(Long senderId) {
 
         User sender = userRepository.findById(senderId).orElseThrow(
                 () -> new CustomException(ErrorCode.NOT_FOUND_USER_INFO));
 
-        User receiver = userRepository.findById(receiverId).orElseThrow(
-                () -> new CustomException(ErrorCode.NOT_FOUND_USER_INFO));
-
-        List<Message> message = messageRepository.findMessageBySenderAndReceiver(sender , receiver);
+        List<Message> message = messageRepository.findMessageBySender(sender);
 
         return message.stream()
                 .map(MessageResponseDto::create)
