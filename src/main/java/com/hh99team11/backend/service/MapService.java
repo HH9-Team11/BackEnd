@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,12 +22,16 @@ public class MapService {
         Double userLat = user.getLat();
         Double userLng = user.getLng();
         Query query = entityManager.createNativeQuery("" +
-                "SELECT u.id, ( 6371 * acos( cos( radians(:userLng) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(:userLat) ) + sin( radians(:userLng) ) * sin( radians( lat ) ) ) ) AS distance " +
-                "FROM user AS u HAVING distance < 5 ORDER BY distance LIMIT 0 , 5;"
+                "SELECT *, ( 6371 * acos( cos( radians(:userLng) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(:userLat) ) + sin( radians(:userLng) ) * sin( radians( lat ) ) ) ) AS distance " +
+                "FROM user AS u HAVING distance < 10000 ORDER BY distance LIMIT 0 , 5;"
                 , User.class);
         query.setParameter("userLng", userLng);
         query.setParameter("userLat", userLat);
-        List result = query.getResultList();
-        return userRepository.findAllNearByUsers(userId);
+        List<User> result = query.getResultList();
+        List<NearByUserResponseDto> responseDtoList = new ArrayList<>();
+        for (User inUser : result) {
+            responseDtoList.add(new NearByUserResponseDto(inUser));
+        }
+        return responseDtoList;
     }
 }
