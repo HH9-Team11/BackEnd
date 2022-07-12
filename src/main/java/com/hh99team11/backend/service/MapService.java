@@ -22,8 +22,8 @@ public class MapService {
         Double userLat = user.getLat();
         Double userLng = user.getLng();
         Query query = entityManager.createNativeQuery("" +
-                "SELECT *, ( 6371 * acos( cos( radians(:userLng) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(:userLat) ) + sin( radians(:userLng) ) * sin( radians( lat ) ) ) ) AS distance " +
-                "FROM user AS u HAVING distance < 10000 ORDER BY distance LIMIT 0 , 5;"
+                "SELECT *, ( 6371 * acos( cos( radians(:userLng) ) * cos( radians( lng ) ) * cos( radians( lat ) - radians(:userLat) ) + sin( radians(:userLng) ) * sin( radians( lng ) ) ) ) AS distance " +
+                "FROM user AS u HAVING distance < 5 ORDER BY distance; " //LIMIT 0 , 5;"
                 , User.class);
         query.setParameter("userLng", userLng);
         query.setParameter("userLat", userLat);
