@@ -23,7 +23,7 @@ public class NearByUserResponseDto {
         this.userId = user.getId();
         this.username = user.getUsername();
         this.petName = user.getPetName();
-//        this.petImg = user.getUserImgList().get(0).getImgUrl();
+        this.petImg = user.getUserImgList().get(0).getImgUrl();
         this.petSize = user.getPetSizeType();
         this.lat = user.getLat();
         this.lng = user.getLng();
