@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,8 +20,15 @@ public class MessageResponseDto {
 
     private String content;
 
+    private String createAt;
+
+
     public static MessageResponseDto create(Message message){
         return new MessageResponseDto(message.getId(), message.getSender().getUsername(),
-                message.getReceiver().getUsername(), message.getContent());
+                message.getReceiver().getUsername(), message.getContent(), timeConversion(message.getCreatedAt()));
+    }
+
+    private static String timeConversion(LocalDateTime createAt){
+        return "오후 " + createAt.getHour() + ":" + String.format("%02d", createAt.getMinute());
     }
 }
