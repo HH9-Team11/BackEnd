@@ -22,25 +22,18 @@ public class MessageController {
 
     private final MessageService messageService;
 
-    // 쪽지 보내기
+    /*
+        DESC : 대상에게 쪽지 보내기
+     */
     @PostMapping("/api/message")
     public ResponseEntity<Object> sendMessage(@RequestBody MessageRequestDto messageRequestDto)  {
         MessageResponseDto messageResponseDto = messageService.createMessage(messageRequestDto.toServiceDto());
         return new ResponseEntity<>(new StatusResponseDto("성공적으로 쪽지를 보냈습니다.", messageResponseDto), HttpStatus.OK);
     }
 
-    // 쪽지 상대 전체 조회 :: 받은 메시지 , 보낸 메시지
-    @GetMapping("/api/communicator")
-    public ResponseEntity<Object> findAllCommunicators(@AuthenticationPrincipal UserDetailsImpl userDetails)  {
-
-        List<CommunicatorResponseDto> messagesDto = messageService.findAllCommunicators(userDetails.getUser().getId());
-        return new ResponseEntity<>(new StatusResponseDto("쪽지 상대 전체를 조회합니다.", messagesDto), HttpStatus.OK);
-    }
-
     /*
         DESC : 대상과의 전체 채팅 내역을 보내는 API
      */
-
     @GetMapping("/api/message")
     public ResponseEntity<Object> findAllMessages(@AuthenticationPrincipal UserDetailsImpl userDetails){
 
@@ -48,6 +41,18 @@ public class MessageController {
 
         return new ResponseEntity<>(new StatusResponseDto("회원의 모든 쪽지 내용을 조회합니다.",messages),HttpStatus.OK);
     }
+
+    /*
+       DESC : 나와 채팅한 모든 대상자들의 리스트
+    */
+    @GetMapping("/api/communicator")
+    public ResponseEntity<Object> findAllCommunicators(@AuthenticationPrincipal UserDetailsImpl userDetails)  {
+
+        List<CommunicatorResponseDto> messagesDto = messageService.findAllCommunicators(userDetails.getUser().getId());
+        return new ResponseEntity<>(new StatusResponseDto("쪽지 상대 전체를 조회합니다.", messagesDto), HttpStatus.OK);
+    }
+
+
 
 }
 
